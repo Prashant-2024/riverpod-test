@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_auth/components/rounded_button.dart';
 import 'package:riverpod_auth/constants.dart';
+import 'package:riverpod_auth/provider/auth_provider.dart';
 import 'package:riverpod_auth/screens/home_screen.dart';
 
 class LoginScreen extends ConsumerWidget {
@@ -74,16 +75,23 @@ class LoginScreen extends ConsumerWidget {
               RoundedButton(
                 buttonColor: Colors.black54,
                 onPressed: () async {
-                  try {
-                    final existingUser = await _auth.signInWithEmailAndPassword(
-                        email: _emailController.text,
-                        password: _emailController.text);
-                    if (existingUser != null) {
-                      Navigator.pushNamed(context, HomeScreen.id);
-                    }
-                  } catch (e) {
-                    print(e);
+                  final authService = ref.read(authServiceProvider);
+                  final existUser =
+                      await authService.signInWithEmailAndPassword(
+                          _emailController.text, _passwordController.text);
+                  if (existUser != null) {
+                    Navigator.pushNamed(context, HomeScreen.id);
                   }
+                  // try {
+                  //   final existingUser = await _auth.signInWithEmailAndPassword(
+                  //       email: _emailController.text,
+                  //       password: _emailController.text);
+                  //   if (existingUser != null) {
+                  //     Navigator.pushNamed(context, HomeScreen.id);
+                  //   }
+                  // } catch (e) {
+                  //   print(e);
+                  // }
                 },
                 buttonText: "Log In",
               ),
