@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_auth/firebase_options.dart';
 import 'package:riverpod_auth/screens/home_screen.dart';
 import 'package:riverpod_auth/screens/login_screen.dart';
+import 'package:riverpod_auth/screens/phone_number_screen.dart';
 import 'package:riverpod_auth/screens/signup_screen.dart';
 import 'package:riverpod_auth/screens/welcome_screen.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         SignupScreen.id: (context) => SignupScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        PhoneNumberInputScreen.id: (context) => PhoneNumberInputScreen(),
       },
     );
   }

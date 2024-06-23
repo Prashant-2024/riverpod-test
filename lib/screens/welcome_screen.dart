@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_auth/components/rounded_button.dart';
 import 'package:riverpod_auth/screens/login_screen.dart';
+import 'package:riverpod_auth/screens/phone_number_screen.dart';
 import 'package:riverpod_auth/screens/signup_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -59,6 +60,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 Navigator.pushNamed(context, SignupScreen.id);
               },
               buttonText: "Sign Up",
+            ),
+            RoundedButton(
+              buttonColor: Colors.black54,
+              onPressed: () {
+                Navigator.pushNamed(context, PhoneNumberInputScreen.id);
+              },
+              buttonText: "Phone Number",
             )
           ],
         ),
